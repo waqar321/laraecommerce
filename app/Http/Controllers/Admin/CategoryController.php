@@ -19,7 +19,6 @@ class CategoryController extends Controller{
     public function create(){
     	return view('admin.category.create');
     }
-
 	public function store(CategoryFormRequest $request){
 
 			$validatedData = $request->validated();
@@ -48,11 +47,13 @@ class CategoryController extends Controller{
 
 	}
     public function edit(Category $category=null){
-        return view('admin.category.edit', compact('category'));   //product ki id ke object ke sath view me bhejega 
+        echo "Edit and update operation is done by livewire";
+        // return view('admin.category.edit', compact('category'));   //product ki id ke object ke sath view me bhejega 
     }
     public function update(CategoryFormRequest $request, $category){    
 
-        $validatedData = $request->validated();
+        echo "Edit and update operation is done by livewire";
+        /*$validatedData = $request->validated();
         $category = Category::findOrFail($category);        // findOrFail($id) takes an id & a object of product, 
         //categogy table me jao jo id aai he uska object utha ke le ao.
         
@@ -81,9 +82,10 @@ class CategoryController extends Controller{
         $category->update();
 
         return redirect('admin/category ')->with('message','Category has been Updated Succesffuly');
-
+*/
     }
     public function delete(CategoryFormRequest $request, $category){
-        dd($category);
+        echo "Delete operation is done by livework";
+        // dd($category);
     }
 }

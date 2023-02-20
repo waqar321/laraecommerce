@@ -10,6 +10,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
 
+
+        <!-- {{-- Bootstrap Styles --}} -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
          <!-- plugins:css -->
       <link rel="stylesheet" href="{{ asset('admin/vendors/mdi/css/materialdesignicons.min.css')}}">
       <link rel="stylesheet" href="{{ asset('admin/vendors/base/vendor.bundle.base.css')}}">
@@ -48,7 +52,6 @@
    </div>
 
 
-
   <!-- plugins:js -->
   <script src="{{ asset('admin/vendors/base/vendor.bundle.base.js') }}"></script>
   <!-- endinject -->
@@ -69,7 +72,15 @@
   <script src="{{ asset('admin/js/dataTables.bootstrap4.js') }}"></script>
   <!-- End custom js for this page-->
 
+    <!-- {{-- framework Scripts --}} -->
+  <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  -->    <!--  vue js -->
+  <script src="https://code.jquery.com/jquery-3.6.2.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+ 
+    @yield('scripts')
 
+    @stack('scripts')
     @livewireScripts
 </body>
 </html>

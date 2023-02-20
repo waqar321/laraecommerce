@@ -1,24 +1,8 @@
 <div>
- <!-- Modal -->
-    <div wire:ignore.self class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Category Delete</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form wire:submit.prevent="destroyCategory">    <!-- it will go to the live function destroyCategory -->
-              <div class="modal-body">
-                <h6>  Are you sure! You want to delete this data?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit " class="btn btn-primary">Yes. Delete</button>
-              </div>
-          </form>
-        </div>
-      </div>
-    </div>
+    @include('livewire.admin.category.DeleteCategoryModal')
+    @include('livewire.admin.category.editCategoryModal')
+    @include('livewire.admin.category.AddCategoryModal')
+
 
   <div class="row">
 	<div class="col-md-12">
@@ -29,7 +13,7 @@
 			<div class="card-header">
 
 	  			<h4> Category	 
-	  				<a href="{{ url('admin/category/create') }} " class="btn btn-primary btn-sm  float-end"> Add Category </a>
+	  				<a href="#" wire:click="CreateCategory()" class="btn btn-primary btn-sm float-end" > Add Category </a>
 	  			</h4>
 	  			</div>
 	  			<div class="card-body"> 
@@ -49,18 +33,44 @@
          							<td> {{ $category->name  }}</td>
          							<td> {{ $category->status == '1' ? 'Hidden':'Visible'  }}</td>
          							<td> 
-         								<a href="{{ url('admin/category/'.$category->id.'/edit') }} " class="btn btn-success"> Edit</a>  
-         								<a href="#" wire:click="deleteCategory({{$category->id}})" data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger" > Delete</a>  
+   								<!-- <a href="{{ url('admin/category/'.$category->id.'/edit') }} " class="btn btn-success"> Edit</a>   -->
+				
+                     <button class="btn btn-success" wire:click="editcategory({{ $category->id }})">Edit</button>
+                     <button href="#" wire:click="deleteCategory({{ $category->id }})" class="btn btn-danger" >Delete</button>
          							</td>
+    
          						</tr>
          					@endforeach
          				</tbody>
          			</table>
          			<div>
-     				{{ $categories->links() }}
+     				 {{ $categories->links() }}
      			</div>
   			</div>
   		</div>
   	</div>
   </div> 
 </div> 
+
+@push('scripts')
+    <script>
+         window.addEventListener('close-modal', event =>{
+            $('#deleteModal').modal('hide');
+            $('#editStudentModal').modal('hide');
+            $('#CreateStudentModal').modal('hide');
+        });
+       
+        window.addEventListener('show-edit-student-modal', event =>{
+            $('#editStudentModal').modal('show');
+        });
+
+        window.addEventListener('show-delete-confirmation-modal', event =>{
+            $('#deleteModal').modal('show');
+        });
+        window.addEventListener('show-create-student-modal', event =>{
+            $('#CreateStudentModal').modal('show');
+        });
+        
+       
+    </script>
+@endpush

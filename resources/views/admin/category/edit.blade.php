@@ -19,7 +19,7 @@
 								<div class="col-md-6 mb-3">   <!-- Name div -->
 									<label> Name</label>
 									<input type="text" name="name" value="{{ $category->name }}" class="form-control"/>
-									@error('name') <small class="text-danger"> {{$message}} </small> @enderror
+									@errputor('name') <small class="text-danger"> {{$message}} </small> @enderror
 								</div>
 								<div class="col-md-6 mb-3">   <!-- Slug div -->
 									<label> Slug</label>

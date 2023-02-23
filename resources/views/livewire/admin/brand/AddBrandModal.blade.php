@@ -16,7 +16,7 @@
                           <select wire:model.defer="category_id" required class="form-control"> 
                               <option value=""> - Select Category </option>
                               @foreach($categories as $category)
-                                <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                <option value="{{ $category->id }}" > {{ $category->name }} </option>
                               @endforeach
                            </select>
                             @error('category_id')
@@ -47,7 +47,8 @@
                       <div class="form-group row">
                               <label for="Status" class="col-3">Status</label>
                               <div class="col-9">
-                                  <input type="text" id="status" class="form-control" wire:model="status"> checked=Hidden, Un-checked=Visible
+                                <input type="checkbox" name="Status" wire:model="status" style="width:100px">
+                                <!-- <input type="text" id="status" class="form-control" wire:model="status"> -->
                                   @error('status')
                                       <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
                                   @enderror

@@ -34,18 +34,19 @@ class Index extends Component
                 'name' => 'required|string',
                 'slug' => 'required|string',
                 'status'  => 'nullable',
+                'category_id'  => 'required|integer',
         ]);
-
+        // dd($validatedData['category_id']);
         $Brand = new Brand;
         $Brand->name = $this->name;
         $Brand->slug = $this->slug;
         $Brand->status = $this->status == true ? '1':'0';
-        $category_id = $this->category_id;
+        $Brand->category_id = $this->category_id;
 
         $Brand->save();
 
        session()->flash('message', 'Brand has been added successfully');
-       $this->dispatchBrowserEvent('close-modal');
+       //$this->dispatchBrowserEvent('close-modal');
 	   $this->CloseAddBrand();
     }
 
@@ -72,15 +73,16 @@ class Index extends Component
 
     public function editBrandData(){
         // dd($this->editbrandId);
-        $this->category_id; 
+       
         $brand = Brand::where('id', $this->editbrandId)->first();
        
         $brand->name = $this->name;
         $brand->slug = Str::slug($this->slug);
         $brand->status = $this->status;
-        $category_id = $this->category_id;
+        $brand->category_id = $this->category_id;
+
         $brand->update();
-        session()->flash('message', 'Student has been updated successfully');
+        session()->flash('message', 'Brand has been updated successfully');
 
         //For hide modal after add student success
         $this->dispatchBrowserEvent('close-modal');

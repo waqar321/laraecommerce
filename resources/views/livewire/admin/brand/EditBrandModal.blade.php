@@ -15,12 +15,13 @@
                     
 
 
-                      <div class="mb-3">
+                          <div class="mb-3">
                           <label>Select category</label>
                           <select wire:model.defer="category_id" required class="form-control"> 
+                               <!--  wire:model.defer="category_id" === default value category_id jo controller se arai-->
                               <option value=""> - Select Category </option>
                               @foreach($categories as $category)
-                                <option value="{{ $category->id }}"> {{ $category->name }} </option>
+                                <option value="{{ $category->id }}" > {{ $category->name }} </option>
                               @endforeach
                            </select>
                             @error('category_id')

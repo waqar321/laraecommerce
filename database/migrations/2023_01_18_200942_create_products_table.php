@@ -34,7 +34,7 @@ return new class extends Migration
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             //product table ne category se uski id as froegin key li he
-            
+
             $table->timestamps();
 
         });

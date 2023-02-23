@@ -11,10 +11,12 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+     public function up()
     {
         Schema::table('brands', function (Blueprint $table) {
-            $table->integer('category_id');
+            
+            $table->bigInteger('category_id')->change()->after('status');
+           
         });
     }
 
@@ -26,7 +28,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('brands', function (Blueprint $table) {
-           $table->dropColumn('category_id');
+             
+            //  Drop the column
+            $table->dropColumn('category_id');
         });
     }
 };

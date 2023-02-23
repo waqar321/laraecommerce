@@ -20,10 +20,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h4 class="mb-4">Our Products</h4>
+                    <h4 class="mb-4"> {{ $category->slug }}</h4>
                 </div>
-             
-             <livewire:frontend.product.index :products="$products" :category="$category" />
+                    <!--  -->
+             <livewire:frontend.product.index :category="$category" />
+            
              <!-- livewire:frontend.product.index == it is livewire component, not blade  
 				  that index function calls 'frontend.product.index' blade, nd passying above both variables.
 				  

@@ -24,6 +24,7 @@
 							<tr>
 								<th> ID </th>
 								<th> Name  </th>
+								<th> Category  </th>
 								<th> Slug </th>
 								<th> Status </th>
 								<th> Action </th>
@@ -34,6 +35,13 @@
 	     						<tr>
 	     							<td> {{ $brand->id }}</td>
 	     							<td> {{ $brand->name  }}</td>
+	     							<td> 
+	     								@if($brand->category)   <!--  brand ke andar category function -->
+	     									{{ $brand->category->name  }}   <!--  category table ki field name lao -->
+	     								@else
+	     									 No Category
+	     								@endif
+	     							</td>
 	     							<td> {{ $brand->slug  }}</td>
 	     							<td> {{ $brand->status == '1' ? 'Hidden':'Visible'  }}</td>   
 	     							<td> 
